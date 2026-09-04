@@ -739,6 +739,20 @@
     });
   }
 
+  // La barra del menú marca su línea inferior solo cuando queda pegada,
+  // para que no se vea una doble regla al inicio de la sección.
+  function watchStickyToolbar() {
+    const toolbar = document.querySelector('.menu-toolbar');
+    if (!toolbar || typeof IntersectionObserver === 'undefined') return;
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;height:1px;width:1px;';
+    toolbar.parentElement.insertBefore(sentinel, toolbar);
+    new IntersectionObserver(([entry]) => {
+      toolbar.classList.toggle('is-stuck', !entry.isIntersecting);
+    }, { rootMargin: `-${toolbar.offsetTop >= 0 ? 90 : 0}px 0px 0px 0px`, threshold: 0 }).observe(sentinel);
+  }
+
   function init() {
     cacheElements();
     loadCart();
@@ -751,6 +765,7 @@
     syncCarouselControls();
     updateClock();
     bindEvents();
+    watchStickyToolbar();
     window.setInterval(updateClock, 30000);
   }
 
