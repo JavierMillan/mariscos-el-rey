@@ -115,7 +115,7 @@ h1, h2, h3, blockquote { font-family: 'Instrument Serif', Georgia, serif; font-w
 .branch-list article > span:first-child { color: var(--gold); font-size: .67rem; font-weight: 700; }
 .branch-list h3 { font-size: 1.8rem; margin: 6px 0 36px; }
 .branch-list p { color: var(--navy-soft); font-size: .78rem; }
-.map-placeholder { position: absolute; bottom: 20px; left: 20px; font-size: .68rem; border-bottom: 1px solid var(--gold); }
+.map-placeholder { position: absolute; bottom: 20px; left: 20px; font-size: .68rem; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 4px; }
 
 footer { background: var(--cream-deep); border-top: 1px solid var(--line); padding: 60px 0 92px; }
 .footer-inner { display: grid; grid-template-columns: .8fr repeat(3, 1fr); gap: 50px; }
@@ -180,7 +180,7 @@ footer { background: var(--cream-deep); border-top: 1px solid var(--line); paddi
 .archive-photo-real > figcaption { color: #d2dad8; font-size: .72rem; padding: 16px 0; line-height: 1.6; }
 .branch-list article { min-height: 310px; padding-bottom: 60px; }
 .branch-email { font-size: .65rem; overflow-wrap: anywhere; }
-.map-placeholder { padding-block: 10px; min-height: 44px; }
+.map-placeholder { display: inline-flex; align-items: center; padding-block: 10px; min-height: 44px; }
 .photo-credit { font-size: .67rem; color: var(--navy-soft); max-width: var(--shell); }
 
 @media (max-width: 900px) {
@@ -373,10 +373,12 @@ footer { background: var(--cream-deep); border-top: 1px solid var(--line); paddi
 }
 
 /* Barra del menú: secciones por horario + acceso directo al PDF. */
-.menu-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 66px; }
+.menu-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: nowrap; margin-bottom: 66px; }
 .menu-toolbar .segment-nav { margin-bottom: 0; }
 .menu-pdf-button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 20px; border: 1px solid var(--navy); background: var(--navy); color: var(--cream); font-size: .8rem; font-weight: 600; text-decoration: none; transition: background .2s ease, color .2s ease; }
 .menu-pdf-button:hover { background: transparent; color: var(--navy); }
+.menu-pdf-button { flex: 0 0 auto; white-space: nowrap; }
+.pdf-label-short { display: none; }
 
 /* La primera venta se cuenta en el texto, no encima de la fotografía. */
 .first-sale { color: #e8c063; font-weight: 700; white-space: nowrap; }
@@ -386,7 +388,11 @@ footer { background: var(--cream-deep); border-top: 1px solid var(--line); paddi
 }
 
 @media (max-width: 600px) {
-  .menu-pdf-button { width: 100%; justify-content: center; }
+  .menu-toolbar { gap: 10px; }
+  .menu-pdf-button { padding: 10px 14px; gap: 6px; }
+  .pdf-label-full { display: none; }
+  .pdf-label-short { display: inline; }
+  .segment-nav { gap: 6px; }
 }
 
 /* ---------------------------------------------------------------
