@@ -76,9 +76,9 @@ h1, h2, h3, blockquote { font-family: 'Instrument Serif', Georgia, serif; font-w
 
 .menu-section { padding-block: 42px 115px; }
 .segment-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 66px; }
-.segment-nav button { min-height: 44px; border: 1px solid #819297; border-radius: 100px; padding: 8px 17px; background: transparent; cursor: pointer; font-size: .82rem; font-weight: 600; }
+.segment-nav button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; border: 1px solid #819297; border-radius: 100px; padding: 8px 17px; background: transparent; cursor: pointer; font-size: .82rem; font-weight: 600; white-space: nowrap; }
 .segment-nav button.is-active { background: var(--navy); color: var(--cream); border-color: var(--navy); }
-.now-dot { display: inline-block; width: 7px; height: 7px; background: var(--gold); border-radius: 50%; margin-left: 4px; vertical-align: 1px; }
+.now-dot { flex: 0 0 auto; width: 7px; height: 7px; background: var(--gold); border-radius: 50%; }
 .menu-heading { display: grid; grid-template-columns: minmax(0, 1fr) 260px; align-items: end; gap: 48px; margin-bottom: 30px; }
 .menu-note, .history-kicker { color: var(--gold); font-size: .75rem; font-weight: 700; margin: 0 0 10px; }
 .menu-heading h2, .branches-heading h2 { font-size: clamp(3.1rem, 6.2vw, 6rem); line-height: .95; letter-spacing: -.02em; margin: 0; font-weight: 400; }
@@ -209,7 +209,7 @@ footer { background: var(--cream-deep); border-top: 1px solid var(--line); paddi
   .heritage-stamp strong { font-size: 2.1rem; }
   .menu-section { padding-top: 26px; padding-bottom: 84px; }
   .segment-nav { gap: 5px; margin-bottom: 44px; }
-  .segment-nav button { flex: 1; padding-inline: 9px; font-size: .75rem; }
+  .segment-nav button { flex: 1 1 auto; padding-inline: 12px; font-size: .75rem; }
   .menu-heading { grid-template-columns: 1fr 105px; gap: 18px; align-items: center; }
   .menu-heading h2 { font-size: 3rem; }
   .menu-line { font-size: .8rem; }
