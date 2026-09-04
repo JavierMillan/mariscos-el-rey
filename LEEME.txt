@@ -36,9 +36,13 @@ QUÉ INCLUYE
 EL RECORRIDO DEL CLIENTE
 ------------------------
   1. Elige platillos   (desde el menú o el carrusel)
-  2. Revisa tu pedido  (cantidades, notas, eliminar)
+  2. Revisa tu pedido  (cantidades, notas, eliminar, vaciar)
   3. Completa tus datos (nombre y teléfono; domicilio si aplica)
   4. Abre WhatsApp     (con el pedido ya escrito)
+
+El cajón trabaja en dos pantallas para no abrumar: primero el pedido
+y su total, y solo al continuar aparecen los datos de entrega. Se
+puede regresar al pedido sin perder lo ya escrito.
 
 
 LO QUE EL DEMO NO HACE (a propósito)

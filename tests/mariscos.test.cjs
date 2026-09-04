@@ -246,6 +246,20 @@ test('the brand pattern is used once, softly, over the dark section', () => {
   assert.ok(opacity <= 0.2, `el patrón debe ser sutil, opacidad ${opacity}`);
 });
 
+test('the drawer splits the order and the delivery details into two steps', () => {
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const js = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+  // Dos pantallas para no abrumar con todo el formulario de golpe.
+  assert.match(html, /id="step-order"[^>]*data-panel="1"/);
+  assert.match(html, /id="step-details"[^>]*data-panel="2" hidden/);
+  assert.match(html, /id="go-details"/);
+  assert.match(html, /id="back-to-order"/);
+  // Solo se avanza con platillos en el pedido.
+  assert.match(js, /els\.goDetails\.disabled = cart\.length === 0;/);
+  // Vaciar devuelve al primer paso: ya no hay datos que completar.
+  assert.match(js, /setClearConfirm\(false\);\s+goToPanel\(1\);/);
+});
+
 test('emptying the order asks for confirmation first', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const js = fs.readFileSync(path.join(root, 'app.js'), 'utf8');

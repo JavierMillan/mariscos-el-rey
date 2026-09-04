@@ -556,3 +556,14 @@ footer { background: var(--cream-deep); border-top: 1px solid var(--line); paddi
   .clear-row { justify-content: space-between; }
   .clear-confirm { width: 100%; justify-content: space-between; }
 }
+
+/* El cajón avanza en dos pantallas: primero el pedido, luego los datos. */
+.order-step[hidden] { display: none !important; }
+.step-total { margin-top: 26px; }
+.step-total .total-line { margin-top: 0; }
+.go-details { margin-top: 4px; background: var(--navy); color: var(--cream); }
+.go-details:hover:not(:disabled) { filter: brightness(1.15); }
+.step-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
+.back-to-order { align-self: flex-start; border: 0; background: transparent; padding: 6px 0; cursor: pointer; font-size: .75rem; font-weight: 600; color: var(--navy-soft); }
+.back-to-order:hover { color: var(--navy); }
+.step-head h3 { margin: 0; font-size: 1.5rem; font-weight: 400; }

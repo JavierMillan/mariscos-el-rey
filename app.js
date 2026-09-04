@@ -211,6 +211,7 @@
   let drawerTrigger = null;
   let carouselIndex = 0;
   let showErrors = false;
+  let currentPanel = 1;
 
   const els = {};
 
@@ -504,6 +505,12 @@
       ? 'Total solo de productos. El envío lo confirma el encargado y no está incluido.'
       : 'Total de productos para recoger en sucursal.';
 
+    els.orderTotal1.textContent = money(calculateTotal(cart));
+    els.goDetails.disabled = cart.length === 0;
+    els.step1Status.textContent = cart.length === 0
+      ? 'Agrega al menos un platillo para continuar.'
+      : 'Listo. Sigue con tus datos de entrega.';
+
     const branch = BRANCHES.find((item) => item.id === els.branch.value);
     const errors = validateOrder({
       mode,
@@ -552,10 +559,12 @@
     const hasItems = cart.length > 0;
     const branch = BRANCHES.find((item) => item.id === els.branch.value);
     const detailsDone = Boolean(branch) && Boolean(els.customer.value.trim()) && normalizePhone(els.phone.value).length >= 10;
+    // Los pasos siguen la pantalla abierta, no solo lo que se ha llenado.
+    const onOrder = currentPanel === 1;
     const state = {
       1: hasItems ? 'done' : 'current',
-      2: !hasItems ? 'pending' : (detailsDone ? 'done' : 'current'),
-      3: !hasItems ? 'pending' : (detailsDone ? 'done' : 'current'),
+      2: onOrder ? (hasItems ? 'current' : 'pending') : 'done',
+      3: onOrder ? 'pending' : (detailsDone ? 'done' : 'current'),
       4: readyToSend ? 'current' : 'pending',
     };
     els.steps.forEach((step) => {
@@ -574,11 +583,24 @@
     renderCart();
   }
 
+  function goToPanel(panel) {
+    currentPanel = panel;
+    els.panels.forEach((section) => {
+      section.hidden = Number(section.dataset.panel) !== panel;
+    });
+    els.drawerContent.scrollTop = 0;
+    updateCheckoutState();
+    const focusTarget = panel === 2 ? els.backToOrder : els.closeDrawer;
+    if (focusTarget) window.setTimeout(() => focusTarget.focus(), 40);
+    announce(panel === 2 ? 'Paso 2: completa tus datos.' : 'Paso 1: tu pedido.');
+  }
+
   function clearCart() {
     cart = [];
     saveCart();
     renderCart();
     setClearConfirm(false);
+    goToPanel(1);
     announce('Pedido vaciado.');
   }
 
@@ -605,6 +627,7 @@
     els.drawerToggle.setAttribute('aria-expanded', String(open));
     els.backdrop.hidden = !open;
     if (open) {
+      if (cart.length === 0) goToPanel(1);
       drawerTrigger = trigger || document.activeElement;
       window.setTimeout(() => els.closeDrawer.focus(), 50);
     } else if (drawerTrigger) {
@@ -640,6 +663,9 @@
       orderCount: document.querySelector('#order-count'), orderTotal: document.querySelector('#order-total'),
       orderFolio: document.querySelector('#order-folio'), orderItems: document.querySelector('#order-items'),
       emptyOrder: document.querySelector('#empty-order'), drawer: document.querySelector('#order-drawer'),
+      panels: [...document.querySelectorAll('.order-step')],
+      goDetails: document.querySelector('#go-details'), backToOrder: document.querySelector('#back-to-order'),
+      orderTotal1: document.querySelector('#order-total-1'), step1Status: document.querySelector('#step1-status'),
       clearRow: document.querySelector('#clear-row'), clearCart: document.querySelector('#clear-cart'),
       clearConfirm: document.querySelector('#clear-confirm'), clearYes: document.querySelector('#clear-yes'),
       clearNo: document.querySelector('#clear-no'),
@@ -710,6 +736,9 @@
       saveCart();
       updateCheckoutState();
     });
+
+    els.goDetails.addEventListener('click', () => goToPanel(2));
+    els.backToOrder.addEventListener('click', () => goToPanel(1));
 
     els.clearCart.addEventListener('click', () => setClearConfirm(true));
     els.clearNo.addEventListener('click', () => setClearConfirm(false));

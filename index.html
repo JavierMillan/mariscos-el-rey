@@ -164,6 +164,7 @@
       </ol>
 
       <p id="storage-notice" class="inline-notice" hidden>El pedido funciona, pero no se conservará al recargar este navegador.</p>
+      <section id="step-order" class="order-step" data-panel="1" aria-label="Tu pedido">
       <p id="empty-order" class="empty-order">Todavía no hay nada apuntado. Elige un platillo del menú y aquí lo organizamos.</p>
       <ul id="order-items" class="order-items" aria-label="Platillos en el pedido"></ul>
       <div id="clear-row" class="clear-row" hidden>
@@ -173,6 +174,19 @@
           <button id="clear-yes" type="button">Sí, vaciar</button>
           <button id="clear-no" type="button">Cancelar</button>
         </span>
+      </div>
+
+      <div class="step-total">
+        <div class="total-line"><span>Total de productos</span><strong id="order-total-1">$0</strong></div>
+        <button id="go-details" class="send-order go-details" type="button" disabled>Continuar con mis datos</button>
+        <p id="step1-status" class="checkout-status">Agrega al menos un platillo para continuar.</p>
+      </div>
+    </section>
+
+    <section id="step-details" class="order-step" data-panel="2" hidden aria-labelledby="step-details-title">
+      <div class="step-head">
+        <button id="back-to-order" class="back-to-order" type="button">← Volver al pedido</button>
+        <h3 id="step-details-title">¿Cómo te lo entregamos?</h3>
       </div>
 
       <div class="order-form">
@@ -236,6 +250,7 @@
       <p id="whatsapp-notice" class="whatsapp-notice" hidden>Abrimos WhatsApp con tu pedido escrito. <strong>Todavía tienes que enviar el mensaje</strong> y esperar que la sucursal lo confirme. Tu pedido se queda guardado aquí.</p>
       <details class="message-details"><summary>Ver mensaje preparado</summary><pre id="message-preview">Completa el pedido para ver el mensaje.</pre></details>
       <p class="demo-note">Demostración: los números de WhatsApp configurados son de prueba, no son líneas oficiales del restaurante.</p>
+    </section>
     </div>
   </section>
 
