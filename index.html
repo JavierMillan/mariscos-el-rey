@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F1E4">
+  <meta name="description" content="Arma tu pedido de Mariscos El Rey: elige tus platillos, revisa tu pedido y confírmalo por WhatsApp.">
+  <title>Mariscos El Rey | La marea de hoy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#menu">Ir al menú</a>
+
+  <header class="site-header">
+    <div class="header-inner shell">
+      <a class="brand-mark" href="#top" aria-label="Mariscos El Rey, inicio">
+        <img src="assets/logo-mariscos-el-rey.png" alt="" width="768" height="714">
+        <img class="crown-layer" src="assets/logo-mariscos-el-rey.png" alt="" aria-hidden="true" width="768" height="714">
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="#historia">Nuestra historia</a>
+        <a href="#menu">Menú</a>
+        <a href="#sucursales">Sucursales</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button id="header-order" class="header-order" type="button">Encargar pedido</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="tide-title">
+      <div class="hero-media" aria-hidden="true">
+        <img id="hero-poster" src="assets/hero/mar-olas-poster.jpg" alt="" width="1600" height="900">
+        <video id="hero-video" poster="assets/hero/mar-olas-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true"></video>
+        <div class="hero-veil"></div>
+      </div>
+      <div class="hero-copy shell">
+        <p class="time-line"><span id="greeting">Buenos días</span>, <time id="clock">8:00 a. m.</time></p>
+        <h1 id="tide-title">Lo de ahorita,<br>bien servido.</h1>
+        <p class="tide-intro">El marisco que usted comió, anoche en el mar durmió. Arme su pedido y nosotros lo dejamos listo.</p>
+        <div class="hero-actions">
+          <a class="hero-cta" href="#menu">Ver el menú de hoy</a>
+          <button id="hero-order" class="hero-cta hero-cta-ghost" type="button">Encargar pedido</button>
+        </div>
+      </div>
+      <div class="heritage-stamp" aria-label="Desde 1966"><span>Desde</span><strong>1966</strong></div>
+      <button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" hidden>
+        <span class="motion-label">Activar movimiento</span>
+      </button>
+    </section>
+
+    <section class="highlights shell" aria-labelledby="highlights-title">
+      <div class="highlights-head">
+        <div>
+          <p class="menu-note">Lo que recomendamos</p>
+          <h2 id="highlights-title">Destacados de la casa</h2>
+          <p class="highlights-note">Platillos del menú vigente. No son promociones ni precios especiales.</p>
+        </div>
+        <div class="carousel-controls">
+          <button id="carousel-prev" class="carousel-arrow" type="button" aria-label="Ver destacado anterior">←</button>
+          <button id="carousel-next" class="carousel-arrow" type="button" aria-label="Ver destacado siguiente">→</button>
+        </div>
+      </div>
+      <div id="carousel-track" class="carousel-track" role="group" aria-label="Platillos destacados" tabindex="0"></div>
+      <div id="carousel-dots" class="carousel-dots" role="tablist" aria-label="Ir a un destacado"></div>
+    </section>
+
+    <section class="menu-section shell" id="menu" aria-labelledby="menu-title">
+      <div class="menu-toolbar">
+        <div class="segment-nav" aria-label="Elegir momento del día">
+          <button type="button" data-segment="breakfast" aria-pressed="false">Desayuno <span class="now-dot" title="Disponible ahora"><span class="sr-only">Disponible ahora</span></span></button>
+          <button type="button" data-segment="lunch" aria-pressed="false">Comida <span class="now-dot" title="Disponible ahora"><span class="sr-only">Disponible ahora</span></span></button>
+          <button type="button" data-segment="night" aria-pressed="false">Noche <span class="now-dot" title="Disponible ahora"><span class="sr-only">Disponible ahora</span></span></button>
+        </div>
+        <a class="menu-pdf-button" href="assets/menu/menu-marzo-2026.pdf" target="_blank" rel="noopener">
+          <span aria-hidden="true">📄</span> Menú completo (PDF)
+        </a>
+      </div>
+
+      <div class="menu-heading">
+        <div>
+          <p id="menu-note" class="menu-note">De 8:00 a 11:59</p>
+          <h2 id="menu-title">Desayunos</h2>
+          <p id="menu-line" class="menu-line">Para empezar el día como manda el norte.</p>
+        </div>
+        <figure class="feature-photo">
+          <img id="feature-image" src="" alt="">
+          <div id="feature-fallback" class="photo-fallback" hidden>Fotografía del menú</div>
+          <figcaption>De la cocina del Rey</figcaption>
+        </figure>
+      </div>
+
+      <div id="menu-grid" class="menu-grid"></div>
+      <div class="menu-download"><p>¿Se antoja seguir viendo?</p><a href="assets/menu/menu-marzo-2026.pdf" target="_blank" rel="noopener">Ver el menú completo de marzo 2026 (PDF)</a></div>
+      <noscript><p class="noscript">Activa JavaScript para cambiar el menú y armar tu pedido.</p></noscript>
+    </section>
+
+    <section class="history-section pattern-band" id="historia" aria-labelledby="history-title">
+      <div class="history-inner shell">
+        <figure class="archive-photo archive-photo-real">
+          <img src="assets/historia/don-tono-anos-80.png" alt="Puesto de mariscos de Don Toño Contreras en Ciudad Obregón durante los años ochenta" width="768" height="576" loading="lazy">
+          <figcaption>Don Toño Contreras en los años ochenta, en la calle Chihuahua al sur de Ciudad Obregón, frente al taller de carrocería 1000 colores.</figcaption>
+        </figure>
+        <div class="history-copy">
+          <p class="history-kicker">Nuestra historia</p>
+          <h2 id="history-title">Antes del restaurante,<br>hubo una hielera y buen callo.</h2>
+          <p>En los años sesenta, Don Juán Contreras y su hijo Don Toño comenzaron vendiendo Callo de Hacha. La primera venta fue de <strong class="first-sale">un peso</strong>. La frescura hizo lo demás: pronto todos los conocían como <em>Los Reyes del Callo</em>.</p>
+          <p>Tres generaciones después, esa misma vara sigue puesta: producto fresco, trato de casa y oficio compartido por cerca de 200 colaboradores en cinco sucursales.</p>
+          <blockquote>“El marisco que usted comió,<br>anoche en el mar durmió.”</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="branches shell" id="sucursales" aria-labelledby="branches-title">
+      <div class="branches-heading">
+        <h2 id="branches-title">Cinco mesas grandes<br>en Sonora.</h2>
+        <p>De Ciudad Obregón a San Carlos, la mesa está puesta. Encuentra tu sucursal y elígela al encargar tu pedido.</p>
+      </div>
+      <div class="branch-list">
+        <article><figure class="branch-photo"><img src="assets/sucursales/obregon.jpg" alt="Sucursal de Mariscos El Rey en Ciudad Obregón" loading="lazy" width="800" height="408"></figure><span>Ciudad Obregón</span><h3>Obregón</h3><p>Quintana Roo y Náinari</p><a class="branch-email" href="mailto:gobregon@mariscoselrey.com">gobregon@mariscoselrey.com</a><a class="map-placeholder" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x86c8153bc7f9a14b:0x6f53961e6ff9a9a9?source=g.page.share" target="_blank" rel="noopener">Cómo llegar</a></article>
+        <article><figure class="branch-photo"><img src="assets/sucursales/guaymas.jpg" alt="Sucursal de Mariscos El Rey en Guaymas, junto al Puente Miramar" loading="lazy" width="800" height="408"></figure><span>Guaymas</span><h3>Miramar</h3><p>Carretera Internacional, junto al Puente Miramar</p><a class="branch-email" href="mailto:gguaymas@mariscoselrey.com">gguaymas@mariscoselrey.com</a><a class="map-placeholder" href="https://g.page/ComiendoComoRey?share" target="_blank" rel="noopener">Cómo llegar</a></article>
+        <article><figure class="branch-photo"><img src="assets/sucursales/hermosillo-reforma.jpg" alt="Sucursal de Mariscos El Rey en Hermosillo, Reforma" loading="lazy" width="800" height="408"></figure><span>Hermosillo</span><h3>Reforma</h3><p>Reforma 277 e Irineo Michel, Col. El Malecón</p><a class="branch-email" href="mailto:ghermosillo@mariscoselrey.com">ghermosillo@mariscoselrey.com</a><a class="map-placeholder" href="https://goo.gl/maps/zfXr8FssjWm1HeL79" target="_blank" rel="noopener">Cómo llegar</a></article>
+        <article><figure class="branch-photo"><img src="assets/sucursales/hermosillo-morelos.jpg" alt="Sucursal de Mariscos El Rey en Hermosillo, Blvd. Morelos" loading="lazy" width="800" height="408"></figure><span>Hermosillo</span><h3>Morelos</h3><p>Blvd. Morelos y Portillo</p><a class="branch-email" href="mailto:ghermosillo@mariscoselrey.com">ghermosillo@mariscoselrey.com</a><a class="map-placeholder" href="https://maps.app.goo.gl/uKDK8J9iFgxxAgip7" target="_blank" rel="noopener">Cómo llegar</a></article>
+        <article><figure class="branch-photo"><img src="assets/sucursales/san-carlos.jpg" alt="Sucursal de Mariscos El Rey en San Carlos, Blvd. Tetakawi" loading="lazy" width="800" height="408"></figure><span>San Carlos</span><h3>Tetakawi</h3><p>Blvd. Tetakawi, frente a Gasolinera Arco</p><a class="branch-email" href="mailto:scarlos@mariscoselrey.com">scarlos@mariscoselrey.com</a><a class="map-placeholder" href="https://goo.gl/maps/67bgwyfjAd1BxGaXA" target="_blank" rel="noopener">Cómo llegar</a></article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="footer-inner shell">
+      <img src="assets/logo-mariscos-el-rey.png" alt="Mariscos El Rey" width="768" height="714">
+      <div><strong>Atención a clientes</strong><a href="tel:+526624920600">(662) 492 0600</a><a href="mailto:hola@mariscoselrey.com">hola@mariscoselrey.com</a></div>
+      <div><strong>Horario</strong><span>Lunes a domingo</span><span>8:00 a. m.–8:00 p. m.</span></div>
+      <div><strong>Síguenos</strong><a href="https://www.instagram.com/mariscoselreyoficial/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/mariscoselrey" target="_blank" rel="noopener">Facebook</a><a href="https://www.tiktok.com/@mariscoselrey" target="_blank" rel="noopener">TikTok</a></div>
+    </div>
+    <p class="copyright shell">© 2026 Mariscos El Rey. Hecho para pedir con hambre.</p>
+    <p class="photo-credit shell">Propuesta de diseño para presentación. Fotografías del restaurante y del archivo proporcionado; video del mar, arrachera, margarita y michelada: material de referencia de Pexels. <a href="FUENTES-Y-CREDITOS.md">Fuentes y créditos</a>.</p>
+  </footer>
+
+  <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
+  <section id="order-drawer" class="order-drawer" aria-labelledby="order-folio" aria-hidden="true">
+    <div class="napkin-edge" aria-hidden="true"></div>
+    <button id="drawer-toggle" class="drawer-toggle" type="button" aria-expanded="false" aria-controls="order-drawer">
+      <span id="order-count">Tu pedido está vacío</span>
+      <span>Encargar pedido <span aria-hidden="true" class="drawer-caret">⌃</span></span>
+    </button>
+    <div id="drawer-content" class="drawer-content" inert>
+      <div class="order-heading">
+        <div><p>Tu pedido</p><h2 id="order-folio">Pedido No. 1966-001</h2></div>
+        <button id="close-drawer" class="close-drawer" type="button" aria-label="Cerrar pedido">Cerrar</button>
+      </div>
+
+      <ol class="order-steps" aria-label="Pasos para encargar">
+        <li data-step="1"><span>1</span> Elige platillos</li>
+        <li data-step="2"><span>2</span> Revisa tu pedido</li>
+        <li data-step="3"><span>3</span> Completa tus datos</li>
+        <li data-step="4"><span>4</span> Abre WhatsApp</li>
+      </ol>
+
+      <p id="storage-notice" class="inline-notice" hidden>El pedido funciona, pero no se conservará al recargar este navegador.</p>
+      <p id="empty-order" class="empty-order">Todavía no hay nada apuntado. Elige un platillo del menú y aquí lo organizamos.</p>
+      <ul id="order-items" class="order-items" aria-label="Platillos en el pedido"></ul>
+
+      <div class="order-form">
+        <fieldset class="mode-field">
+          <legend>¿Cómo lo quieres? <span>Obligatorio</span></legend>
+          <div class="mode-options">
+            <label class="mode-option"><input type="radio" name="mode" value="pickup" checked> <span><strong>Recoger en sucursal</strong><small>Pasas por él a la sucursal que elijas.</small></span></label>
+            <label class="mode-option"><input type="radio" name="mode" value="delivery"> <span><strong>A domicilio</strong><small>El encargado confirma cobertura, costo y tiempo.</small></span></label>
+          </div>
+        </fieldset>
+
+        <div class="field field-branch">
+          <label for="branch">Sucursal <span>Obligatorio</span></label>
+          <select id="branch" required aria-describedby="branch-error">
+            <option value="">Elige una sucursal</option>
+            <option value="obregon">Ciudad Obregón</option>
+            <option value="guaymas">Guaymas</option>
+            <option value="san-carlos">San Carlos</option>
+            <option value="hermosillo-reforma">Hermosillo Reforma</option>
+            <option value="hermosillo-morelos">Hermosillo Morelos</option>
+          </select>
+          <p id="branch-error" class="field-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="customer">Tu nombre <span>Obligatorio</span></label>
+          <input id="customer" type="text" autocomplete="name" maxlength="80" placeholder="Nombre y apellido" aria-describedby="customer-error">
+          <p id="customer-error" class="field-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="phone">Teléfono de contacto <span>Obligatorio</span></label>
+          <input id="phone" type="tel" autocomplete="tel" maxlength="20" placeholder="10 dígitos" aria-describedby="phone-error">
+          <p id="phone-error" class="field-error" hidden></p>
+        </div>
+
+        <div class="field field-wide delivery-only" hidden>
+          <label for="address">Dirección de entrega <span>Obligatorio</span></label>
+          <input id="address" type="text" autocomplete="street-address" maxlength="160" placeholder="Calle, número, colonia" aria-describedby="address-error">
+          <p id="address-error" class="field-error" hidden></p>
+        </div>
+
+        <div class="field field-wide delivery-only" hidden>
+          <label for="references">Referencias del domicilio <span>Opcional</span></label>
+          <input id="references" type="text" maxlength="160" placeholder="Color de casa, entre qué calles, portón…">
+        </div>
+
+        <div class="field field-wide">
+          <label for="order-notes">Notas generales del pedido <span>Opcional</span></label>
+          <textarea id="order-notes" rows="2" maxlength="300" placeholder="Hora aproximada, alergias, algo que debamos saber…"></textarea>
+        </div>
+      </div>
+
+      <p class="delivery-disclaimer delivery-only" hidden>El costo de envío, la cobertura y el tiempo de entrega los confirma el encargado de la sucursal por WhatsApp. Aquí no se calculan.</p>
+
+      <div class="total-line"><span>Total de productos</span><strong id="order-total">$0</strong></div>
+      <p id="total-note" class="total-note">No incluye envío. Si pides a domicilio, el encargado confirma ese costo aparte.</p>
+
+      <button id="send-order" class="send-order" type="button" disabled>Abrir WhatsApp con mi pedido</button>
+      <p id="checkout-status" class="checkout-status">Agrega al menos un platillo para continuar.</p>
+      <p id="whatsapp-notice" class="whatsapp-notice" hidden>Abrimos WhatsApp con tu pedido escrito. <strong>Todavía tienes que enviar el mensaje</strong> y esperar que la sucursal lo confirme. Tu pedido se queda guardado aquí.</p>
+      <details class="message-details"><summary>Ver mensaje preparado</summary><pre id="message-preview">Completa el pedido para ver el mensaje.</pre></details>
+      <p class="demo-note">Demostración: los números de WhatsApp configurados son de prueba, no son líneas oficiales del restaurante.</p>
+    </div>
+  </section>
+
+  <p id="live-region" class="sr-only" aria-live="polite"></p>
+  <script src="app.js"></script>
+</body>
+</html>

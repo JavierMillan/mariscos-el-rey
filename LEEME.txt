@@ -1,0 +1,105 @@
+MARISCOS EL REY — DEMO DE PEDIDOS
+=================================
+Propuesta de diseño para presentar al propietario.
+No es un sitio oficial ni una publicación del restaurante.
+Revisión: 4 de septiembre de 2026.
+
+
+CÓMO ABRIRLO
+------------
+Necesita un servidor local, no basta con abrir index.html desde el
+Explorador (el navegador bloquea el video y algunos recursos).
+
+  cd mariscos-el-rey
+  npx --yes http-server . -p 5188 -c-1
+
+Luego abre:  http://localhost:5188
+
+
+QUÉ INCLUYE
+-----------
+- Menú que cambia solo según la hora (desayuno, comida, noche),
+  con la posibilidad de cambiar de sección a mano.
+- Hero con video del mar, alternativa estática y botón para pausar
+  el movimiento. Respeta la preferencia del sistema de reducir
+  animaciones (prefers-reduced-motion).
+- Carrusel manual de platillos destacados del menú vigente.
+- Fotografías locales de los 12 platillos y de las 5 sucursales.
+- Pedido visual: miniatura, cantidad editable, precio unitario,
+  subtotal, instrucciones por platillo y botón de eliminar.
+- Dos modalidades: "Recoger en sucursal" y "A domicilio".
+- El pedido y los datos del cliente se conservan al recargar.
+- Mensaje detallado listo para WhatsApp.
+
+
+EL RECORRIDO DEL CLIENTE
+------------------------
+  1. Elige platillos   (desde el menú o el carrusel)
+  2. Revisa tu pedido  (cantidades, notas, eliminar)
+  3. Completa tus datos (nombre y teléfono; domicilio si aplica)
+  4. Abre WhatsApp     (con el pedido ya escrito)
+
+
+LO QUE EL DEMO NO HACE (a propósito)
+------------------------------------
+- NO calcula costo de envío, cobertura ni tiempo de entrega.
+  El mensaje dice explícitamente que eso lo confirma el encargado.
+- NO anuncia promociones ni descuentos. Los "destacados" son
+  platillos del menú vigente, sin precios especiales.
+- NO confirma pedidos. Abrir WhatsApp solo prepara el mensaje:
+  el cliente todavía tiene que enviarlo y esperar respuesta.
+  Por eso el pedido NO se borra ni se muestra un falso éxito.
+- NO cobra ni procesa pagos.
+
+
+TELÉFONOS DE WHATSAPP (DE PRUEBA)
+---------------------------------
+IMPORTANTE: son números de prueba para la demostración,
+NO son líneas oficiales del restaurante. Cambiarlos antes de
+cualquier uso real (están en app.js, arriba del todo).
+
+  Obregón, Hermosillo Reforma, Hermosillo Morelos
+      +1 623 239 9551   (Estados Unidos, confirmado por el usuario)
+
+  Guaymas, San Carlos
+      +52 622 142 4577  (México)
+
+El reparto de sucursales es una propuesta y todavía no está
+confirmado con los responsables.
+
+Durante las pruebas no se envió ningún mensaje real: solo se
+verificó que el enlace y el texto se generen bien.
+
+
+PRUEBAS
+-------
+  cd mariscos-el-rey
+  node --test tests/mariscos.test.cjs
+
+Cubren horarios del menú, totales y subtotales, limpieza del
+pedido guardado, validaciones por modalidad, el contenido del
+mensaje de WhatsApp y la existencia de las fotografías locales.
+
+
+ARCHIVOS
+--------
+  index.html              Estructura de la página
+  styles.css              Estilos (crema y azul marino, Instrument Serif/Bricolage)
+  app.js                  Menú, carrusel, pedido y mensaje
+  tests/mariscos.test.cjs Pruebas
+  assets/hero/            Video del mar y su imagen fija
+  assets/menu/            Fotografías de platillos y PDF del menú
+  assets/sucursales/      Fotografías de las 5 sucursales
+  assets/historia/        Fotografía de archivo
+  assets/pattern/         Patrón de marca (textura de la sección historia)
+  FUENTES-Y-CREDITOS.md   De dónde salió cada imagen y dato
+
+
+ANTES DE PUBLICAR
+-----------------
+- Confirmar con el propietario los derechos de las fotografías
+  del restaurante.
+- Confirmar precios y descripciones contra el menú vigente.
+- Sustituir los teléfonos de prueba por las líneas reales.
+- Confirmar la dirección de Hermosillo Reforma (el sitio muestra
+  numeraciones distintas en distintas páginas).
