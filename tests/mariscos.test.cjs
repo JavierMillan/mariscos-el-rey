@@ -246,6 +246,21 @@ test('the brand pattern is used once, softly, over the dark section', () => {
   assert.ok(opacity <= 0.2, `el patrón debe ser sutil, opacidad ${opacity}`);
 });
 
+test('emptying the order asks for confirmation first', () => {
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const js = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+  assert.match(html, /id="clear-cart"/);
+  // Vaciar no se deshace: la confirmación es obligatoria.
+  assert.match(html, /id="clear-confirm"/);
+  assert.match(html, /id="clear-yes"/);
+  assert.match(html, /id="clear-no"/);
+  // El botón nace oculto y solo aparece cuando hay platillos.
+  assert.match(html, /id="clear-row" class="clear-row" hidden/);
+  assert.match(js, /els\.clearRow\.hidden = cart\.length === 0;/);
+  // Solo el botón de confirmar vacía de verdad.
+  assert.match(js, /els\.clearYes\.addEventListener\('click', clearCart\)/);
+});
+
 test('the highlights carousel hides the native scrollbar', () => {
   const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
   assert.match(css, /\.carousel-track::-webkit-scrollbar \{ display: none; \}/);

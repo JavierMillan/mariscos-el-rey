@@ -470,6 +470,9 @@
       </li>`;
     }).join('');
 
+    els.clearRow.hidden = cart.length === 0;
+    if (cart.length === 0) setClearConfirm(false);
+
     updateCheckoutState();
     if (document.querySelector('[data-add]')) {
       renderMenu();
@@ -571,6 +574,22 @@
     renderCart();
   }
 
+  function clearCart() {
+    cart = [];
+    saveCart();
+    renderCart();
+    setClearConfirm(false);
+    announce('Pedido vaciado.');
+  }
+
+  // La confirmación vive junto al botón, sin sacar al cliente del cajón.
+  function setClearConfirm(open) {
+    els.clearConfirm.hidden = !open;
+    els.clearCart.hidden = open;
+    if (open) els.clearYes.focus();
+    else if (!els.clearRow.hidden) els.clearCart.focus();
+  }
+
   function removeItem(id) {
     const item = findCartItem(id);
     cart = cart.filter((entry) => entry.id !== id);
@@ -621,6 +640,9 @@
       orderCount: document.querySelector('#order-count'), orderTotal: document.querySelector('#order-total'),
       orderFolio: document.querySelector('#order-folio'), orderItems: document.querySelector('#order-items'),
       emptyOrder: document.querySelector('#empty-order'), drawer: document.querySelector('#order-drawer'),
+      clearRow: document.querySelector('#clear-row'), clearCart: document.querySelector('#clear-cart'),
+      clearConfirm: document.querySelector('#clear-confirm'), clearYes: document.querySelector('#clear-yes'),
+      clearNo: document.querySelector('#clear-no'),
       drawerContent: document.querySelector('#drawer-content'),
       drawerToggle: document.querySelector('#drawer-toggle'), closeDrawer: document.querySelector('#close-drawer'),
       backdrop: document.querySelector('#drawer-backdrop'), branch: document.querySelector('#branch'),
@@ -688,6 +710,10 @@
       saveCart();
       updateCheckoutState();
     });
+
+    els.clearCart.addEventListener('click', () => setClearConfirm(true));
+    els.clearNo.addEventListener('click', () => setClearConfirm(false));
+    els.clearYes.addEventListener('click', clearCart);
 
     const openDrawer = (event) => setDrawer(true, event.currentTarget);
     els.headerOrder.addEventListener('click', openDrawer);

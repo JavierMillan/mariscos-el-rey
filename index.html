@@ -166,6 +166,14 @@
       <p id="storage-notice" class="inline-notice" hidden>El pedido funciona, pero no se conservará al recargar este navegador.</p>
       <p id="empty-order" class="empty-order">Todavía no hay nada apuntado. Elige un platillo del menú y aquí lo organizamos.</p>
       <ul id="order-items" class="order-items" aria-label="Platillos en el pedido"></ul>
+      <div id="clear-row" class="clear-row" hidden>
+        <button id="clear-cart" class="clear-cart" type="button">Vaciar pedido</button>
+        <span id="clear-confirm" class="clear-confirm" hidden>
+          ¿Seguro? Se quitan todos los platillos.
+          <button id="clear-yes" type="button">Sí, vaciar</button>
+          <button id="clear-no" type="button">Cancelar</button>
+        </span>
+      </div>
 
       <div class="order-form">
         <fieldset class="mode-field">

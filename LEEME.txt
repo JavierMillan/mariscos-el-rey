@@ -28,6 +28,7 @@ QUÉ INCLUYE
 - Pedido visual: miniatura, cantidad editable, precio unitario,
   subtotal, instrucciones por platillo y botón de eliminar.
 - Dos modalidades: "Recoger en sucursal" y "A domicilio".
+- Botón para vaciar el pedido, con confirmación previa.
 - El pedido y los datos del cliente se conservan al recargar.
 - Mensaje detallado listo para WhatsApp.
 
